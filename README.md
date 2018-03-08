@@ -4,7 +4,7 @@
 
 Proyecto basado en el proyecto: (https://packagist.org/packages/abreu1234/acl)
 Este proyecto es un de Fork de https://github.com/abreu1234/acl
-Todo el reconocimiento al trabaja hecho por el usuario abreu1234
+Todo el reconocimiento al trabajo hecho por el usuario abreu1234
 
 El plugin para el manejo de ACL en aplicaciones CakePHP.
 
