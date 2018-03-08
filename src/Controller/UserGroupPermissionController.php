@@ -14,6 +14,7 @@ namespace Acl\Controller;
 
 use Acl\Controller\AppController;
 use Cake\ORM\TableRegistry;
+use Cake\Event\Event;
 
 /**
  * UserGroupPermission Controller
@@ -22,6 +23,14 @@ use Cake\ORM\TableRegistry;
  */
 class UserGroupPermissionController extends AppController
 {
+    
+    public function beforeFilter(Event $event) 
+    {
+        parent::beforeFilter($event);
+
+        $this->Security->config('unlockedActions', ['addAjax', 'getPermission']);
+        $this->eventManager()->off($this->Csrf);
+    }
 
     /**
      * Index method
