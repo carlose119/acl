@@ -43,7 +43,7 @@ Debe iniciar el complemento `Auth` del cakephp
 [(Auth cakephp)](http://book.cakephp.org/3.0/en/controllers/components/authentication.html)
 [(Auth tutorial)](http://book.cakephp.org/3.0/en/tutorials-and-examples/blog-auth-example/auth.html)
 
-## Configuração básica
+## Configuración básica
 
 Para cargar el complemento usted debe agregar el nombre de su controlador de usuarios
 en `Controller\AppController.php` da sua aplicação
