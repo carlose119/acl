@@ -1,64 +1,64 @@
 # CakePHP Acl Plugin
 
-[![License](https://poser.pugx.org/cakephp/acl/license.svg)](https://packagist.org/packages/abreu1234/acl)
+[![License](https://poser.pugx.org/cakephp/acl/license.svg)](https://packagist.org/packages/carlose119/acl)
 
-A plugin for managing ACL in CakePHP applications.
+Proyecto basado en el proyecto: (https://packagist.org/packages/abreu1234/acl)
+Este proyecto es un de Fork de https://packagist.org/packages/abreu1234/acl
 
-Plugin está em faze inicial de desenvolvimento, estou iniciando com o cakephp faz pouco tempo, favor enviar sugestões
-e críticas construtivas.
+El plugin para el manejo de ACL en aplicaciones CakePHP.
 
 ## Instalando via composer
 
-Você pode instalar este plugin usando o composer
-[composer](http://getcomposer.org). Adicionar a seguinte dependência em 
-seu `composer.json` file:
+Usted puede instalar este plugin usando el composer
+[Composer] (http://getcomposer.org). Agregue la siguiente dependencia en
+su `composer.json` file:
 
 ```javascript
 "require": {
-	"abreu1234/acl": "dev-master"
+	"carlose119/acl": "dev-master"
 }
 ```
 
-e agora rode em seu terminal `php composer.phar update`
+y ahora ejecute en su terminal `php composer.phar update`
 
-Carregue o plugin adicionando a seguinte linha em `config\bootstrap.php`:
+Cargue el plugin añadiendo la siguiente línea en `config\bootstrap.php`:
 ```php
 Plugin::load('Acl', ['bootstrap' => false, 'routes' => true]);
 ```
 
-## Criando tabelas
+## Creando tablas
 
-Para criar as tabelas necessárias para o plugin usando `Migrations` 
-rode o seguinte comando em seu terminal:
+Para crear las tablas necesarias para el plugin usando `Migrations`
+ejecute el siguiente comando en su terminal:
 
 ```
 bin/cake migrations migrate -p Acl
 ```
 
-## Carregando complemento Auth
+## Cargando complemento Auth
 
-Você deve iniciar o complemento `Auth` do cakephp
+Debe iniciar el complemento `Auth` del cakephp
 
 [(Auth cakephp)](http://book.cakephp.org/3.0/en/controllers/components/authentication.html)
 [(Auth tutorial)](http://book.cakephp.org/3.0/en/tutorials-and-examples/blog-auth-example/auth.html)
 
 ## Configuração básica
 
-Para carregar o complemento você deve adicionar o nome do seu controller de usuários
-em `Controller\AppController.php` da sua aplicação
+Para cargar el complemento usted debe agregar el nombre de su controlador de usuarios
+en `Controller\AppController.php` da sua aplicação
 
 ```php
 $this->loadComponent('Acl.Acl', ['controllers' =>['user'=>'Users']]);
 ```
 
-Caso você utilize grupos adicionar o nome do controller de grupos também
+Si utiliza grupos agregar el nombre del controlador de grupo también
 
 ```php
 $this->loadComponent('Acl.Acl', ['controllers' =>['user'=>'Users','group'=>'Groups']]);
 ```
 
-## Sincronizar controllers de plugins
-Para sincronizar os controllers de plugins basta adicionar a configuração a índice `plugins`
+## Sincronizar controladores de plugins
+Para sincronizar los controllers de plugins basta con añadir la configuración a índice  `plugins`
 ```php
 $this->loadComponent('Acl.Acl', 
 	[
@@ -68,11 +68,11 @@ $this->loadComponent('Acl.Acl',
 
 );
 ```
-Por padrão o plugin este plugin irá sincronizar os controlelrs
+Por defecto el plugin este plugin sincronizará los controles
 
-## Ignorando pastas e arquivos
-Para ignorar alguma pasta ou arquivo durante a sincronização basta adicionar a configuração o índice `ignore`
-com a seguinte sintaxe `Prefixo->Pasta/Arquivo->Action`. Para ignorar todos os prefixos ou pasta de um prefixo 
+## Ignorar carpetas y archivos
+Para omitir alguna carpeta o archivo durante la sincronización basta con añadir la configuración el índice `ignore`
+con la siguiente sintaxis `Prefixo->Pasta/Arquivo->Action`. Para omitir todos los prefijos o carpetas de un prefijo
 adicione `*`
 ```php
 $this->loadComponent('Acl.Acl', [
@@ -91,10 +91,10 @@ $this->loadComponent('Acl.Acl', [
 ]);
 ```
 
-## Dando permissão
+## Dando permiso
 
-Para dar permissão para algum controller sem precisar do banco de dados
-adicione as seguintes linhas. 
+Para dar permiso a algún controlador sin necesidad de la base de datos
+agregue las líneas siguientes. 
 
 ```php
 $this->loadComponent('Acl.Acl', [
@@ -107,11 +107,11 @@ $this->loadComponent('Acl.Acl', [
         ]);
 ```
 
-Usar o índice `authorize` com a seguinte sintaxe `Prefixo->Controller->Action` 
-no exemplo acima estando dando permissão para o Controller `User` e Action `index`.
-Para aplicação raiz sem prefixo utilizar `/`
+Utilizar el índice `authorize` con la siguiente sintaxis `Prefixo->Controller->Action` 
+en el ejemplo anterior estando dando permiso al Controller `User` e Action `index`.
+Para la aplicación raíz sin prefijo utilizar `/`
 
-Caso precise autorizar um controller dentro de um prefixo usar o nome do prefixo depois da `/` 
+Si necesita autorizar un controlador dentro de un prefijo usar el nombre del prefijo después de `/` 
 
 ```php
 $this->loadComponent('Acl.Acl', [
@@ -126,9 +126,9 @@ $this->loadComponent('Acl.Acl', [
             'controllers' =>['user'=>'Users']
         ]);
 ```
-No exemplo acima estamos dando permissão para o Controller `User` e Action `add` do prefixo `Admin`
+En el ejemplo anterior estamos dando permiso al Controlador `User` y Action` add` del prefijo `Admin`
 
-Caso precise autorizar um plugin utilizar a seguinte sintaxe `Plugin.Prefix` user `/` para a raiz do plugin
+Si necesita autorizar un plugin utilizar la siguiente sintaxis `Plugin.Prefix` user `/` para la raíz del plugin
 ```php
 $this->loadComponent('Acl.Acl', [
             'authorize' => [
@@ -146,8 +146,8 @@ $this->loadComponent('Acl.Acl', [
             'controllers' =>['user'=>'Users']
         ]);
 ```
-Exemplo acima por segurança apenas utilize até você ter adicionado permissões para algum usuário ou grupo. 
-Após remover as linhas
+El ejemplo de arriba por seguridad sólo utilice hasta que haya agregado permisos a algún usuario o grupo.
+Después de quitar las líneas
 ```php
 'Acl./' => [
           'Permission' => ['index','synchronize'],
@@ -156,8 +156,8 @@ Após remover as linhas
 ```
 
 ## Método isAuthorized
-Para fazer a validação do usuário ou grupo, use o método isAuthorized do complemento Auth. Adicione no 
-arquivo `AppController.php` o seguinte código.
+Para realizar la validación del usuario o grupo, utilice el método isAuthorized del complemento Auth. Agregue en el 
+archivo `AppController.php` el siguiente código.
 ```php
     public function isAuthorized($user)
     {
@@ -170,12 +170,12 @@ arquivo `AppController.php` o seguinte código.
     }
 ```
 
-## Sincronizando 
-Para sincronizar os controllers e actions basta ir até o endereço: `/acl/permission` e clicar no link de sincronização
-é importante o usuário ter permissão de acesso ao controller `Permission` e Actions `index` e `synchronize`
+## Sincronización 
+Para sincronizar los controllers y actions basta ir a la dirección: `/acl/permission` hacer clic en el enlace de sincronización
+es importante que el usuario tenga permiso de acceso al controlador `Permission` y Actions `index` y `synchronize`
 
-## Gerenciando permissões
-Para gerenciar as permissões dos usuários ou grupos bastar ir até o endereço : `/acl/user-group-permission`
-Selecionar o usuário ou grupo e a as permissões.
-Para funcionar o usuário é preciso ter sincronizado as permissões e ter permissão de acesso ao 
-controller `UserGroupPermission` e Actions `index`, `getPermission` e `addAjax`
+## Administrar permisos
+Para gestionar los permisos de los usuarios o grupos basta con ir a la dirección: `/acl/user-group-permission`
+Seleccione el usuario o el grupo y los permisos.
+Para funcionar el usuario hay que haber sincronizado los permisos y tener permiso de acceso al usuario
+controlador `UserGroupPermission` y Actions `index`, `getPermission` y `addAjax`
