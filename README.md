@@ -46,7 +46,7 @@ Debe iniciar el complemento `Auth` del cakephp
 ## Configuración básica
 
 Para cargar el complemento usted debe agregar el nombre de su controlador de usuarios
-en `Controller\AppController.php` da sua aplicação
+en `Controller\AppController.php` de su aplicación
 
 ```php
 $this->loadComponent('Acl.Acl', ['controllers' =>['user'=>'Users']]);
