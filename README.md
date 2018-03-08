@@ -69,7 +69,21 @@ $this->loadComponent('Acl.Acl',
 
 );
 ```
-Por defecto el plugin este plugin sincronizará los controles
+Por defecto este plugin sincronizará los controladores
+
+## Configurar los campos de Autenticación
+Para configurar campos de autenticación distintos a lo que utiliza el CakePhp por defecto
+```php
+$this->loadComponent('Acl.Acl', 
+	[
+            'authenticate' => [
+                'username' => 'email',
+                'password' => 'password'                    
+            ],
+	]
+
+);
+```
 
 ## Ignorar carpetas y archivos
 Para omitir alguna carpeta o archivo durante la sincronización basta con añadir la configuración el índice `ignore`

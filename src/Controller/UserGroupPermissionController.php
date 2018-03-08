@@ -42,11 +42,12 @@ class UserGroupPermissionController extends AppController
         $userGroupPermission = $this->UserGroupPermission->newEntity();
         
         $controllers = $this->Acl->getControllers();
+        $authenticate = $this->Acl->getAuthenticate();
         $groups = $users = [];
         
         if( !empty($controllers['user']) ) {
             $Users = TableRegistry::get($controllers['user']);
-            $users = $Users->find()->select(['id','email'])->toArray();
+            $users = $Users->find()->select(['id',$authenticate['username']])->toArray();
         }
         if( !empty($controllers['group']) ) {
             $groups = TableRegistry::get($controllers['group']);
@@ -55,7 +56,7 @@ class UserGroupPermissionController extends AppController
 
         $permission = $this->UserGroupPermission->Permission->find()->select(['id','unique_string'])
             ->order(['unique_string'=>'DESC'])->toArray();
-        $this->set(compact('userGroupPermission', 'permission', 'users', 'groups'));
+        $this->set(compact('userGroupPermission', 'permission', 'users', 'groups', 'authenticate'));
         $this->set('_serialize', ['userGroupPermission']);
     }
     

@@ -107,7 +107,7 @@
             <legend><?= __('Add User Group Permission') ?></legend>
             <?php
             foreach ( $users as $user )
-                $options_users['Users']['user-'.$user->id] = $user->email;
+                $options_users['Users']['user-'.$user->id] = $user->$authenticate['username'];
             
             foreach ( $groups as $group )
                 $options_users['Groups']['group-'.$group->id] = $group->name;

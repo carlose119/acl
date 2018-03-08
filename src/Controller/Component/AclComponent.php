@@ -51,6 +51,8 @@ class AclComponent extends Component
      * @var Array
      */
     private $controllers = ['group'=>'','user'=>''];
+    
+    private $authenticate = ['username' => 'username', 'password' => 'password'];
 
     private $all_files = [];
 
@@ -69,6 +71,9 @@ class AclComponent extends Component
 
         if( isset($config['plugins']) )
             $this->_plugins = array_merge($this->_plugins, $config['plugins']);
+        
+        if( isset($config['authenticate']) )
+            $this->authenticate = array_merge($this->authenticate, $config['authenticate']);
     }
 
     /**
@@ -234,6 +239,11 @@ class AclComponent extends Component
     public function getControllers()
     {
         return $this->controllers;
+    }
+    
+    public function getAuthenticate()
+    {
+        return $this->authenticate;
     }
 
 }
